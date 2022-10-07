@@ -90,6 +90,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 });
 
 router.get("/login", isLoggedOut, (req, res) => {
+  console.log(res);
   res.render("auth/login");
 });
 
