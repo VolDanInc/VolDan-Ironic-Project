@@ -30,8 +30,8 @@
     <p>
       
       {{#if isLogged}}
-      Hello, {{ isLogged.email }} |
-      <a href="/user-profile">Profile Page</a>
+      Hello, {{ isLogged.userName }} !|
+      <a href="/auth/user-profile">Profile Page</a>
       <br>
       <form id="logout-form" action="/auth/logout" method="POST">
         <button>Logout</button>

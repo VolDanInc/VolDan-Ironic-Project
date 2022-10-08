@@ -19,7 +19,7 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { email, password } = req.body;
+  const { userName, email, password } = req.body;
 
   if (!email) {
     return res.status(400).render("auth/signup", {
@@ -62,6 +62,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
         // Create a user and save it in the database
         //console.log(hashedPassword);
         return User.create({
+          userName,
           email,
           passwordHash: hashedPassword,
         });
@@ -145,7 +146,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 });
 
 router.post("/logout", isLoggedIn, (req, res) => {
-  console.log(res);
+  //console.log(res);
   req.session.destroy((err) => {
     if (err) {
       return res
@@ -154,6 +155,66 @@ router.post("/logout", isLoggedIn, (req, res) => {
     }
     //console.log(req.session.user)
     res.redirect("/");
+  });
+});
+
+router.get("/user-profile", isLoggedIn, (req, res) => {
+  //console.log(res);
+  res.render("auth/userprofile");
+});
+
+router.get("/changepw", isLoggedIn, (req, res) => {
+  //console.log(req.body);
+  res.render("auth/userprofile", { chgPw: true });
+});
+
+router.post("/user-profile", isLoggedIn, (req, res) => {
+  //console.log(req.body);
+  const { oldpw, newpw, newpwd } = req.body;
+
+  const currentUser = req.session.user;
+  console.log(currentUser._id);
+  console.log("change page");
+  bcrypt.compare(oldpw, currentUser.passwordHash).then((isSamePassword) => {
+    if (!isSamePassword) {
+      console.log("old pass");
+      return res
+        .status(400)
+        .render("auth/userprofile", { errorMessage: "Wrong old password." });
+    } else if (newpw.length < 8) {
+      console.log("new pass");
+      return res.status(400).render("auth/userprofile", {
+        errorMessage: "Your password needs to be at least 8 characters long.",
+      });
+    } else if (newpwd !== newpw) {
+      //console.log("new2 pass");
+      return res.status(400).render("auth/userprofile", {
+        errorMessage: "Your repeat new password doesn't match new password.",
+      });
+    } else {
+      bcrypt
+        .genSalt(saltRounds)
+        .then((salt) => bcrypt.hash(newpwd, salt))
+        .then((newHashedPassword) => {
+          //console.log("hash pass");
+          //console.log(newHashedPassword);
+          //console.log(currentUser._id);
+          return User.findOneAndUpdate({_id: currentUser._id}, { passwordHash: newHashedPassword })
+        })
+        .then((user) => {
+          //console.log("good pass");
+          //console.log(user);
+          // Bind the user to the session object
+          req.session.user = user;
+          //res.redirect("/auth/user-profile");
+          return res.status(200).render("auth/userprofile", {
+            Message: "Your password changed!",
+          });
+        })
+        .catch((error) => {
+          console.log("Password is not changed", error);
+        })
+        }
   });
 });
 
