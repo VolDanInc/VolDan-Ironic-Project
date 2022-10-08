@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 
-const favoritesSchema = new Schema(
+const favoriteSchema = new Schema(
   {
     title: String,
     description: String,

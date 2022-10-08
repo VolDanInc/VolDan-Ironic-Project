@@ -31,7 +31,8 @@ app.use( (req, res, next) => {
 // 👇 Start handling routes here
 const index = require("./routes/index.routes");
 app.use("/", index);
-
+const favorites = require("./routes/favorites.routes");
+app.use("/", favorites);
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 

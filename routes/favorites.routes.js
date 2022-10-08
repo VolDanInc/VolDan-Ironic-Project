@@ -35,10 +35,7 @@ router.get("/favorites/create", isLoggedIn, (req, res, next) => {
 
       res.render("favorites/favorites-create");
     })
-    .catch(err => {
-      console.log("error getting favorites from DB", err);
-      next(err);
-    })
+    
 
 
 
