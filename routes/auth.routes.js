@@ -60,7 +60,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((salt) => bcrypt.hash(password, salt))
       .then((hashedPassword) => {
         // Create a user and save it in the database
-        console.log(hashedPassword);
+        //console.log(hashedPassword);
         return User.create({
           email,
           passwordHash: hashedPassword,
@@ -90,7 +90,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
 });
 
 router.get("/login", isLoggedOut, (req, res) => {
-  console.log(res);
+  //console.log(res);
   res.render("auth/login");
 });
 
@@ -130,6 +130,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
         }
 
         req.session.user = user;
+        //console.log(req.session.user);
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
         return res.redirect("/");
       });
@@ -143,14 +144,15 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
 });
 
-router.get("/logout", isLoggedIn, (req, res) => {
+router.post("/logout", isLoggedIn, (req, res) => {
+  console.log(res);
   req.session.destroy((err) => {
     if (err) {
       return res
         .status(500)
         .render("auth/logout", { errorMessage: err.message });
     }
-    
+    //console.log(req.session.user)
     res.redirect("/");
   });
 });
