@@ -1,0 +1,15 @@
+<h1>List of favorites:</h1>
+
+{{#each favorites}}
+    <section class="favorites-list">
+        <h2>{{this.title}}</h2>
+        <p>
+            Format: {{this.format}} <br />
+            Description: {{this.description}}<br />
+            
+            <a href="https://open.spotify.com/embed/episode/6eRkkusvlcrW4SjAKe1cef?utm_source=generator">Link </a> |
+            <a href="/favorites/{{_id}}/edit">Edit</a>
+        </p>
+
+    </section>
+{{/each}}

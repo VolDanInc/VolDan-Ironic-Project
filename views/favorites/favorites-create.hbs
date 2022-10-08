@@ -1,0 +1,28 @@
+<h2>Create a favorite</h2>
+
+<form action="/favorites/create" method="post">
+  <label> Title:
+    <input type="text" name="title" />
+  </label>
+
+  <label> Description:
+    <textarea name="description" cols="30" rows="4"> </textarea>
+  </label>
+
+<label> Link:
+<input type="url" name ="url" placeholder="https://example.com"  />
+</label>
+   
+
+  <label> Format:
+    <select name="format">
+        <option value = "movie">movie</option>
+        <option value = "series">series</option>
+        <option value = "book">book</option>
+        <option value = "podcast">podcast</option>
+    </select>
+  </label>
+
+
+  <button type="submit"> Create </button>
+</form>
