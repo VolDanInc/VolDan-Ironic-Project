@@ -31,10 +31,13 @@ app.use( (req, res, next) => {
 // 👇 Start handling routes here
 const index = require("./routes/index.routes");
 app.use("/", index);
-const favorites = require("./routes/favorites.routes");
-app.use("/", favorites);
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
+const favorites = require("./routes/favorites.routes");
+app.use("/", favorites);
+const books = require("./routes/external/books.routes");
+app.use("/", books);
+
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

@@ -11,24 +11,23 @@
 <body>
   <header>
     <p>
-      <a href="/favorites">My Favorits</a> |
-      <a href="/favorites/create">Save new Favorit</a> |
+      <a href="/">Home</a> |
+      <a href="/favorites">My Favorites</a> |
+      <a href="/favorites/create">Save new Favorite</a> |
       <label> Media:
         <select name="media">
-          
-          <option value="media">Books</option>
+          <option value="media">Movies</option>
           <option value="media">Articles</option>
+          <option value="media">Books</option>
           <option value="media">Podcasts</option>
-          <option value="media">Videos</option>
-          <option value="media">Films</option>
-         
+          
         </select>
       </label>
-      <button>Find</button>
+      <button>Review</button>
     </p>
 
     <p>
-      
+
       {{#if isLogged}}
       Hello, {{ isLogged.userName }} !|
       <a href="/auth/user-profile">Profile Page</a>
@@ -40,11 +39,13 @@
       <a href="/auth/signup">Register</a> |
       <a href="/auth/login">Login</a> |
       {{/if}}
-      
-      </p>
+
+    </p>
   </header>
   {{{body}}}
-
+  <footer>
+    <p>{{appTitle}}</p>
+  </footer>
   <script src="/js/script.js"></script>
 </body>
 
