@@ -1,0 +1,10 @@
+<h2>Choose a book for your favorites</h2>
+{{#each booksFromNet}}
+<h1>{{volumeInfo.title}}</h1>
+<img src={{volumeInfo.imageLinks.thumbnail}} />
+<p>{{volumeInfo.authors}}</p>
+<p>{{volumeInfo.publishedDate}}</p>
+<p>{{volumeInfo.description}}</p>
+<p>Pages count: {{volumeInfo.pageCount}}</p>
+<p>Language: {{volumeInfo.language}}</p>
+{{/each}}

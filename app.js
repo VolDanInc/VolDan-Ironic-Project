@@ -35,7 +35,7 @@ const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);
 const favorites = require("./routes/favorites.routes");
 app.use("/", favorites);
-const books = require("./routes/external/books.routes");
+const books = require("./routes/books.routes");
 app.use("/", books);
 
 
