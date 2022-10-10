@@ -1,2 +1,18 @@
 <h1> 🚀 Enjoy your favorits through the saved your own!</h1>
+<h2>Choose a book for your favorites</h2>
+<div class="media">
 
+    {{#each booksFromNet}}
+    <div class="topic">
+        <h4>{{volumeInfo.title}}</h4>
+        <div>
+            <img src={{volumeInfo.imageLinks.thumbnail}} />
+            <p>{{volumeInfo.publishedDate}}</br>
+                Pages count: {{volumeInfo.pageCount}}</br>
+                Language: {{volumeInfo.language}}</p>
+        </div>
+
+    </div>
+
+    {{/each}}
+</div>
