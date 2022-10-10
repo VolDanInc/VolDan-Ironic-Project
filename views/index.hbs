@@ -1,18 +1,39 @@
 <h1> 🚀 Enjoy your favorits through the saved your own!</h1>
-<h2>Choose a book for your favorites</h2>
-<div class="media">
 
-    {{#each booksFromNet}}
-    <div class="topic">
-        <h4>{{volumeInfo.title}}</h4>
-        <div>
-            <img src={{volumeInfo.imageLinks.thumbnail}} />
-            <p>{{volumeInfo.publishedDate}}</br>
-                Pages count: {{volumeInfo.pageCount}}</br>
-                Language: {{volumeInfo.language}}</p>
+<div class="container">
+    <h2>Choose a book for your favorites</h2>
+    <div class="media">
+        {{#each booksFromNet}}
+        <div class="topic">
+            <h4>{{volumeInfo.title}}</h4>
+            <div>
+                <img src={{volumeInfo.imageLinks.thumbnail}} />
+                <p>{{volumeInfo.publishedDate}}</br>
+                    Pages count: {{volumeInfo.pageCount}}</br>
+                    Language: {{volumeInfo.language}}</p>
+            </div>
         </div>
-
+        {{/each}}
     </div>
 
-    {{/each}}
+    <h2>Choose a music for your favorites</h2>
+    <div class="media">
+        {{#each arrOfItems}}
+        <div class="topic">
+            <h4>{{name}}</h4>
+            <div>
+                {{#if images.0.url}}
+                <img src={{images.0.url}} />
+                {{else}}
+                <img src="/images/avatar.png" />
+                {{/if}}
+                <p>{{release_date}}</br>
+                    {{type}}: {{album_type}}</br>
+                    {{artists.0.name}}</br>
+                    <a href={{external_urls.spotify}}>Link</a>
+                </p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
 </div>

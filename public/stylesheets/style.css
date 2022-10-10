@@ -18,7 +18,7 @@ h1 {
 }
 .topic {
   flex-direction: column;
-  width: 8vw;
+  width: 7vw;
   margin: 1%;
   font-size:x-small;
 }

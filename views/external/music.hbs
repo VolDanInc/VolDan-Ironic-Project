@@ -1,0 +1,16 @@
+<h2>Choose a music for your favorites</h2>
+{{#each arrOfItems}}
+<section id="music">
+    <h3>{{name}}</h3>
+    
+    {{#if images.0.url}}
+    <img src={{images.0.url}} />
+    {{else}}
+    <img src="/images/avatar.png" />
+    {{/if}}
+    <p>{{release_date}}</br>
+    {{type}}: {{album_type}}</br>
+    {{artists.0.name}}</br>
+    {{external_urls.spotify}}</p>
+</section>
+{{/each}}
