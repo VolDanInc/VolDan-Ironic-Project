@@ -45,7 +45,7 @@ router.post("/favorites/create", isLoggedIn, (req, res, next) => {
   const favoritesDetails = {
     title: req.body.title,
     description: req.body.description,
-    link: req.body.link,
+    link: req.body.url,
     format: req.body.format
   }
 

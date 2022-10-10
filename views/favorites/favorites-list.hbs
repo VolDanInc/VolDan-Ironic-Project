@@ -7,9 +7,12 @@
             Format: {{this.format}} <br />
             Description: {{this.description}}<br />
             
-            <a href="https://open.spotify.com/embed/episode/6eRkkusvlcrW4SjAKe1cef?utm_source=generator">Link </a> |
+            <a href="{{this.link}}">Link </a> |
             <a href="/favorites/{{_id}}/edit">Edit</a>
         </p>
 
+ <form action="/favorites/{{_id}}/delete" method="POST">
+            <button>Delete</button>
+        </form>
     </section>
 {{/each}}
