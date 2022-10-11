@@ -6,40 +6,34 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>{{appTitle}}</title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
+  
 </head>
 
 <body>
-  <header>
-    <p>
-      <a href="/">Home</a> |
-      <a href="/favorites">My Favorites</a> |
-      <a href="/favorites/create">Save new Favorite</a> |
-      
-      
-    
-    </p>
+  <div class="container text-left">
+    <header class="row">
+      <div class="col">
+        <h2>VolDan Project</h2>
+        <div class="tabs">
+          <a href="/">Home</a> 
+          <a href="/favorites">My Favorites</a> 
+          <a href="/favorites/create">New Favorite</a> 
+          <a href="/auth/user-profile">Profile</a>
+        </div>
+      </div>
+   </header>
+      </div>
+  
 
-    <p>
-
-      {{#if isLogged}}
-      Hello, {{ isLogged.userName }} !|
-      <a href="/auth/user-profile">Profile Page</a>
-      <br>
-    <form id="logout-form" action="/auth/logout" method="POST">
-      <button>Logout</button>
-    </form>
-    {{else}}
-    <a href="/auth/signup">Register</a> |
-    <a href="/auth/login">Login</a> |
-    {{/if}}
-
-    </p>
-  </header>
   {{{body}}}
+
+  
   <footer>
     <p>{{appTitle}}</p>
   </footer>
   <script src="/js/script.js"></script>
+
+  
 </body>
 
 </html>

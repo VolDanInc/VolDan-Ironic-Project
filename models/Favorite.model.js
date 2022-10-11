@@ -3,6 +3,7 @@ const { Schema, model } = require("mongoose");
 
 const favoriteSchema = new Schema(
   {
+    id: String, 
     title: String,
     description: String,
     imageLinks: String,

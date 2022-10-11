@@ -7,7 +7,8 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 //READ: List all favorites
 
 router.get("/favorites", (req, res, next) => {
-  Favorite.find()
+  
+  Favorite.find({id: req.session.user._id})
     .then( favoritesFromDB => {
         res.render("favorites/favorites-list", {favorites: favoritesFromDB})
     })
@@ -17,18 +18,6 @@ router.get("/favorites", (req, res, next) => {
     })
 });
 
-//READ: List all favorites
-router.get("/favorites", (req, res, next) => {
-  Favorite.find()
-    .populate("format")
-    .then( favoritesFromDB => {
-        res.render("favorites/favorites-list", {favorites: favoritesFromDB})
-    })
-    .catch( err => {
-      console.log("error getting favorites from DB", err);
-      next(err);
-    })
-});
 
 //CREATE: display form
 router.get("/favorites/create", isLoggedIn, (req, res, next) => {
@@ -43,6 +32,7 @@ router.get("/favorites/create", isLoggedIn, (req, res, next) => {
 router.post("/favorites/create", isLoggedIn, (req, res, next) => {
   
   const favoritesDetails = {
+    id: req.session.user,
     title: req.body.title,
     description: req.body.description,
     link: req.body.url,
@@ -111,6 +101,7 @@ router.post("/favorites/:favoriteId/delete", isLoggedIn, (req, res, next) => {
 router.post("/favorites/createNewFavorite", isLoggedIn,(req, res, next) => {
   console.log("req.params.title")
   const favorite= {
+    id: req.session.user,
     title: req.body.title,
     imageLinks: req.body.imageLinks,
     publishedDate: req.body.publishedDate,
@@ -130,6 +121,7 @@ router.post("/favorites/createNewFavorite", isLoggedIn,(req, res, next) => {
 router.post("/favorites/createNewFavorites", isLoggedIn,(req, res, next) => {
   console.log("req.params.title")
   const favorite= {
+    id: req.session.user,
     title: req.body.title,
     imageLinks: req.body.imageLinks,
     publishedDate: req.body.publishedDate,
