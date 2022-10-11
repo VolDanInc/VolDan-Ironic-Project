@@ -35,7 +35,7 @@ router.post("/favorites/create", isLoggedIn, (req, res, next) => {
     id: req.session.user, 
     title: req.body.title,
     description: req.body.description,
-    imageLinks: imageLinks,
+    imageLinks: req.body.imageLinks,
     publishedDate: req.body.publishedDate,
     pageCount: req.body.pageCount,
     language: req.body.language,
@@ -56,16 +56,16 @@ router.post("/favorites/create", isLoggedIn, (req, res, next) => {
 })
 
 //UPDATE: display form
-//router.get("/books/:bookId/edit", isLoggedIn, (req, res, next) => {
-//  Book.findById(req.params.bookId)
-//    .then( (bookDetails) => {
-//      res.render("books/book-edit", bookDetails);
-//    })
-//    .catch( err => {
-//      console.log("Error getting book details from DB...", err);
-//      next();
-//    });
-//});
+router.get("/favorites/:favoriteId/edit", isLoggedIn, (req, res, next) => {
+  Favorite.findById(req.params.favoriteId)
+    .then( (favoriteDetails) => {
+      res.render("favorites/favorites-edit", favoriteDetails);
+    })
+    .catch( err => {
+      console.log("Error getting book details from DB...", err);
+      next();
+    });
+});
 
 
 //UPDATE: process form
@@ -76,7 +76,7 @@ router.post("/favorites/:favoriteId/edit", isLoggedIn, (req, res, next) => {
     id: req.session.user, 
     title: req.body.title,
     description: req.body.description,
-    imageLinks: imageLinks,
+    imageLinks: req.body.imageLinks,
     publishedDate: req.body.publishedDate,
     pageCount: req.body.pageCount,
     language: req.body.language,
@@ -87,7 +87,7 @@ router.post("/favorites/:favoriteId/edit", isLoggedIn, (req, res, next) => {
 
   Favorite.findByIdAndUpdate(favoriteId, newFavDetails)
     .then(() => {
-      res.redirect(`/favoritess/${favoriteId}`);
+      res.redirect("/favorites");
     })
     .catch(err => {
       console.log("Error updating favorite entry...", err);
