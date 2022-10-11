@@ -127,5 +127,26 @@ router.post("/favorites/createNewFavorite", isLoggedIn,(req, res, next) => {
 });
 })
 
+router.post("/favorites/createNewFavorites", isLoggedIn,(req, res, next) => {
+  console.log("req.params.title")
+  const favorite= {
+    title: req.body.title,
+    imageLinks: req.body.imageLinks,
+    publishedDate: req.body.publishedDate,
+    type: req.body.type,
+    author: req.body.author,
+    previewLink: req.body.previewLink
+  }
+ Favorite.create(favorite)
+.then((favorite) =>{
+  res.redirect("/favorites")
+})
+.catch(err => {
+  console.log("Error listing favorite from API...", err);
+  next();
+});
+})
+
+
 
 module.exports = router;

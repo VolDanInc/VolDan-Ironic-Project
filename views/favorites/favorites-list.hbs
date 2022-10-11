@@ -5,8 +5,14 @@
         <h2>{{this.title}}</h2>
         <img src={{this.imageLinks}} />
         <p>Published Date: {{this.publishedDate}}<br />
+        {{#if this.language}}
            Page count: {{this.pageCount}}<br />
            Language: {{this.language}}<br />
+           {{else }}
+           Type: {{this.type}}<br />
+           Artist: {{this.author}}<br />
+          <a href="{{this.previewLink}}">Preview</a> <br />
+           {{/if}}
             <a href="/favorites/{{_id}}/edit">Edit</a>
         </p>
 
