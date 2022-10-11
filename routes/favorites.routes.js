@@ -6,7 +6,7 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 
 //READ: List all favorites
 
-router.get("/favorites", (req, res, next) => {
+router.get("/favorites", isLoggedIn, (req, res, next) => {
   
   Favorite.find({id: req.session.user._id})
     .then( favoritesFromDB => {
@@ -32,11 +32,16 @@ router.get("/favorites/create", isLoggedIn, (req, res, next) => {
 router.post("/favorites/create", isLoggedIn, (req, res, next) => {
   
   const favoritesDetails = {
-    id: req.session.user,
+    id: req.session.user, 
     title: req.body.title,
     description: req.body.description,
-    link: req.body.url,
-    format: req.body.format
+    imageLinks: imageLinks,
+    publishedDate: req.body.publishedDate,
+    pageCount: req.body.pageCount,
+    language: req.body.language,
+    type: req.body.type,
+    author: req.body.author,
+    previewLink: req.body.previewLink
   }
 
   Favorite.create(favoritesDetails)
@@ -51,27 +56,33 @@ router.post("/favorites/create", isLoggedIn, (req, res, next) => {
 })
 
 //UPDATE: display form
-router.get("/books/:bookId/edit", isLoggedIn, (req, res, next) => {
-  Book.findById(req.params.bookId)
-    .then( (bookDetails) => {
-      res.render("books/book-edit", bookDetails);
-    })
-    .catch( err => {
-      console.log("Error getting book details from DB...", err);
-      next();
-    });
-});
+//router.get("/books/:bookId/edit", isLoggedIn, (req, res, next) => {
+//  Book.findById(req.params.bookId)
+//    .then( (bookDetails) => {
+//      res.render("books/book-edit", bookDetails);
+//    })
+//    .catch( err => {
+//      console.log("Error getting book details from DB...", err);
+//      next();
+//    });
+//});
 
 
 //UPDATE: process form
 router.post("/favorites/:favoriteId/edit", isLoggedIn, (req, res, next) => {
-  const favoriteId = req.params.favoritekId;
+  const favoriteId = req.params.favoriteId;
 
   const newFavDetails = {
+    id: req.session.user, 
     title: req.body.title,
     description: req.body.description,
-    link: req.body.link,
-    format: req.body.format
+    imageLinks: imageLinks,
+    publishedDate: req.body.publishedDate,
+    pageCount: req.body.pageCount,
+    language: req.body.language,
+    type: req.body.type,
+    author: req.body.author,
+    previewLink: req.body.previewLink
   }
 
   Favorite.findByIdAndUpdate(favoriteId, newFavDetails)
@@ -106,7 +117,8 @@ router.post("/favorites/createNewFavorite", isLoggedIn,(req, res, next) => {
     imageLinks: req.body.imageLinks,
     publishedDate: req.body.publishedDate,
     pageCount: req.body.pageCount,
-    language: req.body.language
+    language: req.body.language,
+    previewLink: req.body.previewLink
   }
  Favorite.create(favorite)
 .then((favorite) =>{
