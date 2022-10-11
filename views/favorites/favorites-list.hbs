@@ -3,11 +3,10 @@
 {{#each favorites}}
     <section class="favorites-list">
         <h2>{{this.title}}</h2>
-        <p>
-            Format: {{this.format}} <br />
-            Description: {{this.description}}<br />
-            
-            <a href="{{this.link}}">Link </a> |
+        <img src={{this.imageLinks}} />
+        <p>Published Date: {{this.publishedDate}}<br />
+           Page count: {{this.pageCount}}<br />
+           Language: {{this.language}}<br />
             <a href="/favorites/{{_id}}/edit">Edit</a>
         </p>
 

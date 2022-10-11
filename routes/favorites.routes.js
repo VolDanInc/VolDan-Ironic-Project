@@ -108,4 +108,24 @@ router.post("/favorites/:favoriteId/delete", isLoggedIn, (req, res, next) => {
 
 });
 
+router.post("/favorites/createNewFavorite", isLoggedIn,(req, res, next) => {
+  console.log("req.params.title")
+  const favorite= {
+    title: req.body.title,
+    imageLinks: req.body.imageLinks,
+    publishedDate: req.body.publishedDate,
+    pageCount: req.body.pageCount,
+    language: req.body.language
+  }
+ Favorite.create(favorite)
+.then((favorite) =>{
+  res.redirect("/favorites")
+})
+.catch(err => {
+  console.log("Error listing favorite from API...", err);
+  next();
+});
+})
+
+
 module.exports = router;

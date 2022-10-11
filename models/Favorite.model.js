@@ -5,11 +5,13 @@ const favoriteSchema = new Schema(
   {
     title: String,
     description: String,
-    link: String,
-    format: {
-      type: String,
-      enum: ["movie", "series", "book", "podcast"]
-    }
+    imageLinks: String,
+    publishedDate: String,
+    pageCount: Number,
+    language: String,
+    type: String,
+    author: String,
+    previewLink: String
     },
     
   
