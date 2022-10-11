@@ -11,16 +11,20 @@
         <button class="btn btn-outline-secondary">Logout</button>
     </form>
     {{else}}
-    <a href="/auth/login" class="btn btn-outline-warning" role="button">Login</a> </br>
+     <div class="login">
+<a href="/auth/login">Login</a> 
+</div></br>
     <a href="/auth/signup">Sign up</a>
 
     {{/if}}
 
     </p>
+
+    <div class="arrow bounce"></div>
 </div>
 
 <div class="container">
-    <h2>Choose a book for your favorites</h2>
+    <h2 id="chooseBook">Choose a book for your favorites</h2>
     <div class="media">
         {{#each booksFromNet}}
         <div class="topic">
@@ -29,11 +33,11 @@
                 <img src={{volumeInfo.imageLinks.thumbnail}} />
                 <p>{{volumeInfo.publishedDate}}</br>
                     Pages count: {{volumeInfo.pageCount}}</br>
-                    Language: {{volumeInfo.language}}
+                    Language: {{volumeInfo.language}}</br>
                     <a href="{{volumeInfo.infoLink}}">More details</a>
                 <div class="form">
                     <form action="/favorites/createNewFavorite" method="post">
-
+                            <button> Add to favorites</button>
                         <input type="text" name="title" value="{{volumeInfo.title}}" />
 
                         <input type="text" name="imageLinks" value="{{volumeInfo.imageLinks.thumbnail}}" />
@@ -46,7 +50,7 @@
 
                         <input type="text" name="previewLink" value="{{volumeInfo.infoLink}}" />
 
-                        <button> Add to favorites</button>
+                        
 
                     </form>
                 </div>
@@ -55,7 +59,7 @@
         </div>
         {{/each}}
     </div>
-    <h2>Choose a music for your favorites</h2>
+    <h2 id="chooseBook">Choose a music for your favorites</h2>
     <div class="media">
         {{#each arrOfItems}}
         <div class="topic">
@@ -72,7 +76,7 @@
                     <a href={{external_urls.spotify}}>Link</a>
                 <div class="form">
                     <form action="/favorites/createNewFavorites" method="post">
-
+                        <button> Add to favorites</button>
                         <input type="text" name="title" value="{{name}}" />
 
                         <input type="text" name="imageLinks" value="{{images.0.url}}" />
@@ -84,7 +88,7 @@
                         <input type="text" name="author" value="{{artists.0.name}}" />
 
                         <input type="text" name="previewLink" value="{{external_urls.spotify}}" />
-                        <button> Add to favorites</button>
+                        
                     </form>
                 </div>
                 </p>

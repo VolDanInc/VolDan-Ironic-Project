@@ -13,13 +13,24 @@
   <div class="container text-left">
     <header class="row">
       <div class="col">
-        <h2>VolDan Project</h2>
-        <div class="tabs">
-          <a href="/">Home</a> 
-          <a href="/favorites">My Favorites</a> 
-          <a href="/favorites/create">New Favorite</a> 
-          <a href="/auth/user-profile">Profile</a>
-        </div>
+        <h2 id="VolDan">a VolDan&trade; Project</h2>
+        <div id="menu">
+  <div id="menu-bar" onclick="menuOnClick()">
+    <div id="bar1" class="bar"></div>
+    <div id="bar2" class="bar"></div>
+    <div id="bar3" class="bar"></div>
+  </div>
+  <nav class="nav" id="nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/favorites">My Favorites</a></li>
+      <li><a href="/favorites/create">New Favorite</a></li>
+      <li><a href="/auth/user-profile">Profile</a></li>
+    </ul>
+  </nav> 
+</div>
+
+<div class="menu-bg" id="menu-bg"></div>
       </div>
    </header>
       </div>
@@ -28,9 +39,7 @@
   {{{body}}}
 
   
-  <footer>
-    <p>{{appTitle}}</p>
-  </footer>
+ 
   <script src="/js/script.js"></script>
 
   

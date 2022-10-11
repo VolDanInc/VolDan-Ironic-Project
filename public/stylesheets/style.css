@@ -48,25 +48,33 @@ body {
 .form button{
   display: flex;
 }
-
-/* .topic {
-  width: 100%;
-  margin: 0 auto;
-text-align: center; 
-
-} */
-
-
-
-/* 
-a {
-  color: #00b7ff;
+#chooseBook{
+  text-align: center;
+  color: #cb8d18;
+  font-size:xx-large
 }
-
-h1 {
-  color: 15px;
+.login a{
+    
+    top:50%;
+    background-color:#f3a617;
+    color: rgb(234, 233, 233);
+    border:none; 
+    border-radius:10px; 
+    padding: 12px;
+    min-height:10px; 
+    min-width: 80px;
+    font-size: medium;
+  }
+  .btn:hover {
+    background-color:#a66e06;
+    transition: 0.7s;
 }
-*/
+h2{
+  text-align: right;
+  color:#a7a7a7;
+  margin-right: 20px;
+  
+}
 .media {
   display: flex;
   flex-direction: row;
@@ -87,3 +95,135 @@ h4 {
   height: 14%;
 }
 
+/* burger menu styling */
+
+
+#menu {
+  z-index: 2;
+}
+
+#menu-bar {
+  width: 45px;
+  height: 40px;
+  margin: 30px 0 20px 20px;
+  cursor: pointer;
+}
+
+.bar {
+  height: 5px;
+  width: 100%;
+  background-color: #cb8d18;
+  display: block;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+#bar1 {
+  transform: translateY(-4px);
+}
+
+#bar3 {
+  transform: translateY(4px);
+}
+
+.nav {
+  transition: 0.3s ease;
+  display: none;
+}
+
+.nav ul {
+  padding: 0 22px;
+}
+
+.nav li {
+  list-style: none;
+  padding: 12px 0;
+}
+
+.nav li a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.nav li a:hover {
+  font-weight: bold;
+}
+
+.menu-bg, #menu {
+  top: 0;
+  left: 0;
+  
+  position: absolute;
+}
+
+.menu-bg {
+  z-index: 1;
+  width: 0;
+  height: 0;
+  margin: 30px 0 20px 20px;
+  background: radial-gradient(circle,#f3a617, #f3a617);
+  border-radius: 50%;
+  transition: 0.3s ease;
+}
+
+.change {
+  display: block;
+}
+
+.change .bar {
+  background-color: white;
+}
+
+.change #bar1 {
+  transform: translateY(4px) rotateZ(-45deg);
+}
+
+.change #bar2 {
+  opacity: 0;
+}
+
+.change #bar3 {
+  transform: translateY(-6px) rotateZ(45deg);
+}
+
+.change-bg {
+  width: 520px;
+  height: 460px;
+  transform: translate(-60%,-30%);
+}
+
+/*bouncing arrow down homepage*/
+
+.arrow
+{
+  position: relative; 
+  bottom: -20rem;
+  left: 50%;
+  margin-left:-20px;
+  width: 40px;
+  height: 40px;
+ 
+
+  /**
+   * Dark Arrow Down
+   */
+  background-image: url(https://static1.squarespace.com/static/5e78f290575a6321739eba41/t/5ec8625c6dad0e25fa5a8234/1590190684880/Arrow.png);
+  background-size: contain;
+}
+
+.bounce {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
