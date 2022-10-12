@@ -1,6 +1,7 @@
 <div class="centered">
+  <div class="favoritesBody">
 <form action="/auth/signup" method="POST">
-   <label> Username or nikname
+   <label> Username
       <input type="text" name="userName" placeholder="ironhacker" required />
    </label>
    <label> Email
@@ -16,4 +17,5 @@
 {{#if errorMessage}}
    {{errorMessage}}
 {{/if}}
+</div>
 </div>
