@@ -1,32 +1,53 @@
 <div class="centered">
-<h2>Create a favorite</h2>
+  <h2 class="editTitle">Create a favorite</h2>
 
-<form action="/favorites/create" method="post">
-
-
-  <label> Title:
-    <input type="text" name="title" />
-  </label>
-
-  <label> Description:
-    <textarea name="description" cols="30" rows="4"> </textarea>
-  </label>
-
-<label> Link:
-<input type="text" name ="previewLink" placeholder="https://example.com"  />
-</label>
-   
-
-  <label> Format:
-    <select name="format">
-        <option value = "movie">movie</option>
-        <option value = "series">series</option>
-        <option value = "book">book</option>
-        <option value = "podcast">podcast</option>
-    </select>
-  </label>
+<div class="favoritesBody">
+  <form action="/favorites/create" method="post">
 
 
-  <button type="submit"> Create </button>
-</form>
+    <label> Title:
+      <input type="text" name="title" required />
+    </label>
+
+    <label> Description:
+      <textarea name="description" cols="10" rows="4"> </textarea>
+    </label>
+
+    <label> Image:
+      <input type="text" name="imageLinks" placeholder="paste a link" />
+    </label>
+
+
+    <label> Published Date:
+      <input type="text" name="publishedDate" />
+    </label>
+
+    <label> Page Count:
+      <input type="text" name="pageCount" />
+    </label>
+
+    <label> Language:
+      <input type="text" name="language" />
+    </label>
+
+    <label> Format:
+      <select name="format">
+        <option value="movie">movie</option>
+        <option value="series">series</option>
+        <option value="book">book</option>
+        <option value="podcast">podcast</option>
+      </select>
+    </label>
+
+    <label> Author:
+      <input type="text" name="author" />
+    </label>
+
+    <label> Link:
+      <input type="text" name="previewLink" placeholder="https://example.com" required />
+    </label>
+
+    <button type="submit"> Create </button>
+  </form>
+  </div>
 </div>

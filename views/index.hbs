@@ -9,7 +9,7 @@
 
         <br>
     <form id="logout-form" action="/auth/logout" method="POST">
-        <button class="btn btn-outline-secondary">Logout</button>
+        <button class="button">Logout</button>
     </form>
     {{else}}
      <div class="login">
@@ -29,16 +29,17 @@
     <div class="media">
         {{#each booksFromNet}}
         <div class="topic">
-            <h4>{{volumeInfo.title}}</h4>
-            <div>
-                <img src={{volumeInfo.imageLinks.thumbnail}} />
+            <div class="titleFav">
+            <h4 >{{volumeInfo.title}}</h4>
+            </div>
+                <img  src={{volumeInfo.imageLinks.thumbnail}}  />
                 <p>{{volumeInfo.publishedDate}}</br>
                     Pages count: {{volumeInfo.pageCount}}</br>
                     Language: {{volumeInfo.language}}</br>
                     <a href="{{volumeInfo.infoLink}}">More details</a>
                 <div class="form">
                     <form action="/favorites/createNewFavorite" method="post">
-                            <button> Add to favorites</button>
+                            <button class="addFavorites"> Add to favorites</button>
                         <input type="text" name="title" value="{{volumeInfo.title}}" />
 
                         <input type="text" name="imageLinks" value="{{volumeInfo.imageLinks.thumbnail}}" />
@@ -56,15 +57,17 @@
                     </form>
                 </div>
                 </p>
-            </div>
+            
         </div>
         {{/each}}
     </div>
-    <h2 id="chooseBook">Choose a music for your favorites</h2>
+    <h2 id="chooseBook">Choose an album for your favorites</h2>
     <div class="media">
         {{#each arrOfItems}}
         <div class="topic">
+            <div class="titleFav">
             <h4>{{name}}</h4>
+            </div>
             <div>
                 {{#if images.0.url}}
                 <img src={{images.0.url}} />
@@ -77,7 +80,7 @@
                     <a href={{external_urls.spotify}}>Link</a>
                 <div class="form">
                     <form action="/favorites/createNewFavorites" method="post">
-                        <button> Add to favorites</button>
+                        <button class="addFavorites"> Add to favorites</button>
                         <input type="text" name="title" value="{{name}}" />
 
                         <input type="text" name="imageLinks" value="{{images.0.url}}" />

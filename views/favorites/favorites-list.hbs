@@ -1,11 +1,12 @@
 <div class="centered">
-    <h2>List of favorites:</h2>
-    <div class="media">
+    <h2 class="editTitle">List of favorites:</h2>
+
+    <div class="media" id="break5">
         {{#each favorites}}
         <div class="topic">
             <section class="favorites-list">
                 <h4>{{this.title}}</h4>
-                <img src={{this.imageLinks}} />
+                <img src={{this.imageLinks}} /> 
                 <p>Published Date: {{this.publishedDate}}<br />
                     {{#if this.language}}
                     Page count: {{this.pageCount}}<br />

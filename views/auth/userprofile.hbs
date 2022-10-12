@@ -1,7 +1,10 @@
 <div class="centered">
-<h2>You are registered as {{isLogged.userName}}.</h2>
+    <div class="favoritesBody">
+<h2 class="editTitle">You're registered as {{isLogged.userName}}.</h2>
 <h2>{{errorMessage}}{{Message}}</h2>
 {{#if chgPw}}
+
+
 <form id="passFields" action="/auth/user-profile" method="POST">
     <label> Old password
         <input type="password" name="oldpw" placeholder="********" required />
@@ -9,14 +12,16 @@
     <label> New password
         <input type="password" name="newpw" placeholder="********" required />
     </label>
-    <label> Repeat new password
+    <label> Repeat password
         <input type="password" name="newpwd" placeholder="********" required />
     </label>
-    <button type="submit">Change password</button>
+    <button type="submit">Submit</button>
 </form>
+
 {{else}}
 <form action="/auth/changepw" method="GET">
     <button type="submit" >Change password</button>
 </form>
 {{/if}}
+</div>
 </div>

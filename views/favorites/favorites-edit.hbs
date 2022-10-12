@@ -1,19 +1,32 @@
 <div class="centered">
-  <h2>Edit: {{title}}</h2>
+  
+  <h2 class="editTitle">Edit: {{title}}</h2>
 
+<div class="favoritesBody">
   <form action="/favorites/{{_id}}/edit" method="post">
     <label> Title:
-      <input type="text" name="title" value="{{title}}" />
+      <input type="text" name="title" value="{{title}}" required />
     </label>
 
     <label> Description:
-      <textarea name="description" cols="30" rows="4">{{description}} </textarea>
+      <textarea name="description" cols="10" rows="4">{{description}} </textarea>
     </label>
 
-    <label> Link:
-      <input type="text" name="previewLink" placeholder="https://example.com" />
+    <label> Image:
+      <input name="imageLinks" value="{{imageLinks}}" placeholder="paste a link" />
     </label>
 
+    <label> Published Date:
+      <input type="text" name="publishedDate" value="{{publishedDate}}" />
+    </label>
+
+    <label> Page Count:
+      <input type="text" name="pageCount" value="{{pageCount}}" />
+    </label>
+
+    <label> Language:
+      <input type="text" name="language" value="{{language}}" />
+    </label>
 
     <label> Format:
       <select name="format">
@@ -24,7 +37,16 @@
       </select>
     </label>
 
+    <label> Author:
+      <input type="text" name="author" value="{{author}}" />
+    </label>
 
-    <button> Save </button>
+    <label> Link:
+      <input type="text" name="previewLink" placeholder="https://example.com" />
+    </label>
+
+    <button type="submit"> Save </button>
+  
   </form>
+  </div>
 </div>
