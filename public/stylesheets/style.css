@@ -362,3 +362,9 @@ margin:unset;
   width: auto;
   font-size: medium;
 }
+
+#centList {
+  overflow-y: auto; 
+  max-height: 99vh; 
+  min-height: 20vh;
+}

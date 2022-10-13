@@ -117,15 +117,15 @@ router.post("/favorites/:favoriteId/delete", isLoggedIn, (req, res, next) => {
 
 router.get("/favorites/createNewFavorite", isLoggedIn, (req, res, next) => {
 
-  res.render("favorites/createNewFavorite");
+  res.render("favorites/favorites-list");
 })
 
 
 router.post("/favorites/createNewFavorite", isLoggedIn, (req, res, next) => {
-  console.log("req.params.title")
+  //console.log("req.params.title")
   const favorite = {
     userId: req.session.user,
-    origId: req.session.origId,
+    origId: req.body.origId,
     title: req.body.title,
     imageLinks: req.body.imageLinks,
     publishedDate: req.body.publishedDate,
@@ -136,7 +136,7 @@ router.post("/favorites/createNewFavorite", isLoggedIn, (req, res, next) => {
 
   Favorite.findOne({ origId: favorite.origId })
     .then((found) => {
-
+//console.log(found);
       // If the user is found, send the message username is taken
       if (found) {
         return res
@@ -161,10 +161,10 @@ router.post("/favorites/createNewFavorite", isLoggedIn, (req, res, next) => {
 })
 
 router.post("/favorites/createNewFavorites", isLoggedIn, (req, res, next) => {
-  console.log("req.params.title")
+  //console.log("req.params.title")
   const favorite = {
     userId: req.session.user,
-    origId: req.session.origId,
+    origId: req.body.origId,
     title: req.body.title,
     imageLinks: req.body.imageLinks,
     publishedDate: req.body.publishedDate,

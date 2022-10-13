@@ -53,7 +53,7 @@ router.post("/books", (req, res) => {
                 .get("https://www.googleapis.com/books/v1/volumes?q=search+terms")
                 .then((books) => {
                     const booksPreview = books.data.items;
-                    console.log(books.data.items[0].volumeInfo);
+                    //console.log(books.data.items[0].volumeInfo);
                     res.render("external/books", { booksFromNet: booksPreview });
                 })
                 .catch((err) => console.log(err));

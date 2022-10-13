@@ -173,16 +173,16 @@ router.post("/user-profile", isLoggedIn, (req, res) => {
   const { oldpw, newpw, newpwd } = req.body;
 
   const currentUser = req.session.user;
-  console.log(currentUser._id);
-  console.log("change page");
+  //console.log(currentUser._id);
+  //console.log("change page");
   bcrypt.compare(oldpw, currentUser.passwordHash).then((isSamePassword) => {
     if (!isSamePassword) {
-      console.log("old pass");
+      //console.log("old pass");
       return res
         .status(400)
         .render("auth/userprofile", { errorMessage: "Wrong old password." });
     } else if (newpw.length < 8) {
-      console.log("new pass");
+      //console.log("new pass");
       return res.status(400).render("auth/userprofile", {
         errorMessage: "Your password needs to be at least 8 characters long.",
       });

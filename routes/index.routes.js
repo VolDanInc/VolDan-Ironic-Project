@@ -18,7 +18,7 @@ router.get("/", (req, res, next) => {
     .get("https://www.googleapis.com/books/v1/volumes?q=search+terms")
     .then((books) => {
       const booksPreview = books.data.items;
-      //console.log(books.data.items[0].volumeInfo.imageLinks);
+      //console.log(books.data.items);
       //res.render("index", { booksFromNet: booksPreview });
       return booksPreview;
     })
