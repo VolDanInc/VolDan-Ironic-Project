@@ -32,7 +32,8 @@ router.get("/favorites/create", isLoggedIn, (req, res, next) => {
 router.post("/favorites/create", isLoggedIn, (req, res, next) => {
 
   const favoritesDetails = {
-    id: req.session.user,
+    userId: req.session.user,
+    origId: req.body.origId,
     title: req.body.title,
     description: req.body.description,
     imageLinks: req.body.imageLinks,
@@ -76,7 +77,8 @@ router.post("/favorites/:favoriteId/edit", isLoggedIn, (req, res, next) => {
   const favoriteId = req.params.favoriteId;
 
   const newFavDetails = {
-    id: req.session.user,
+    userId: req.session.user,
+    origId: req.body.origId,
     title: req.body.title,
     description: req.body.description,
     imageLinks: req.body.imageLinks,
@@ -113,10 +115,17 @@ router.post("/favorites/:favoriteId/delete", isLoggedIn, (req, res, next) => {
 
 });
 
+router.get("/favorites/createNewFavorite", isLoggedIn, (req, res, next) => {
+
+  res.render("favorites/createNewFavorite");
+})
+
+
 router.post("/favorites/createNewFavorite", isLoggedIn, (req, res, next) => {
   console.log("req.params.title")
   const favorite = {
-    id: req.session.user,
+    userId: req.session.user,
+    origId: req.session.origId,
     title: req.body.title,
     imageLinks: req.body.imageLinks,
     publishedDate: req.body.publishedDate,
@@ -124,20 +133,38 @@ router.post("/favorites/createNewFavorite", isLoggedIn, (req, res, next) => {
     language: req.body.language,
     previewLink: req.body.previewLink
   }
-  Favorite.create(favorite)
-    .then((favorite) => {
-      res.redirect("/favorites")
+
+  Favorite.findOne({ origId: favorite.origId })
+    .then((found) => {
+
+      // If the user is found, send the message username is taken
+      if (found) {
+        return res
+          .status(400)
+          .render("favorites/favorites-list", { Message: "You already have this favorite." });
+      } else {
+        Favorite.create(favorite)
+          .then((favorite) => {
+            res.redirect("/favorites")
+          })
+          .catch(err => {
+            console.log("Error listing favorite from API...", err);
+            next();
+          });
+      }
     })
     .catch(err => {
       console.log("Error listing favorite from API...", err);
       next();
-    });
+    })
+
 })
 
 router.post("/favorites/createNewFavorites", isLoggedIn, (req, res, next) => {
   console.log("req.params.title")
   const favorite = {
-    id: req.session.user,
+    userId: req.session.user,
+    origId: req.session.origId,
     title: req.body.title,
     imageLinks: req.body.imageLinks,
     publishedDate: req.body.publishedDate,
@@ -145,16 +172,29 @@ router.post("/favorites/createNewFavorites", isLoggedIn, (req, res, next) => {
     author: req.body.author,
     previewLink: req.body.previewLink
   }
+  Favorite.findOne({ origId: favorite.origId })
+  .then((found) => {
 
-  
-  Favorite.create(favorite)
-    .then((favorite) => {
-      res.redirect("/favorites")
-    })
-    .catch(err => {
-      console.log("Error listing favorite from API...", err);
-      next();
-    });
+    // If the user is found, send the message username is taken
+    if (found) {
+      return res
+        .status(400)
+        .render("favorites/favorites-list", { Message: "You already have this favorite." });
+    } else {
+      Favorite.create(favorite)
+        .then((favorite) => {
+          res.redirect("/favorites")
+        })
+        .catch(err => {
+          console.log("Error listing favorite from API...", err);
+          next();
+        });
+    }
+  })
+  .catch(err => {
+    console.log("Error listing favorite from API...", err);
+    next();
+  })
 })
 
 

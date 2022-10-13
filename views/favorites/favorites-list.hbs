@@ -1,13 +1,19 @@
 <div class="centered" id="centList">
+    {{#if Message}}
+    <h2 class="editTitle">{{Message}}</h2>
+    <a id="tryAgain" href="/favorites">Try again</a>
+    {{else}}
     <h2 class="editTitle">List of favorites:</h2>
+    {{/if}}
+
 
     <div class="media" id="break5">
         {{#each favorites}}
         <div class="topic" id="topicOfList">
             <section class="favorites-list">
                 <h4>{{this.title}}</h4>
-{{#if this.imageLinks}}
-                <img  src={{this.imageLinks}}  />
+                {{#if this.imageLinks}}
+                <img src={{this.imageLinks}} />
                 {{else}}
                 <img src="https://cdn-icons-png.flaticon.com/512/1903/1903162.png" />
                 {{/if}}
@@ -17,13 +23,13 @@
                     {{#if this.language}}
                     Page count: {{this.pageCount}}<br />
                     Language: {{this.language}}<br />
-                    
+
                     <a href="{{this.previewLink}}">Preview</a> <br />
                     {{else }}
                     Type: {{this.type}}<br />
                     Artist: {{this.author}}<br />
                     <a href="{{this.previewLink}}">Preview</a> <br />
-                    
+
                     {{/if}}
                     <a href="/favorites/{{_id}}/edit">Edit</a>
                 </p>

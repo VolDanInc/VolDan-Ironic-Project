@@ -46,6 +46,9 @@
                 <div class="form">
                     <form action="/favorites/createNewFavorite" method="post">
                             <button class="addFavorites"> Add to favorites</button>
+
+                        <input type="text" name="origId" value="{{volumeInfo.id}}" />
+
                         <input type="text" name="title" value="{{volumeInfo.title}}" />
 
                         <input type="text" name="imageLinks" value="{{volumeInfo.imageLinks.thumbnail}}" />
@@ -87,6 +90,9 @@
                 <div class="form">
                     <form action="/favorites/createNewFavorites" method="post">
                         <button class="addFavorites"> Add to favorites</button>
+
+                        <input type="text" name="origId" value="{{id}}" />         
+
                         <input type="text" name="title" value="{{name}}" />
 
                         <input type="text" name="imageLinks" value="{{images.0.url}}" />
