@@ -6,22 +6,30 @@
         <div class="topic" id="topicOfList">
             <section class="favorites-list">
                 <h4>{{this.title}}</h4>
-                <img src={{this.imageLinks}} /> 
+{{#if this.imageLinks}}
+                <img  src={{this.imageLinks}}  />
+                {{else}}
+                <img src="https://cdn-icons-png.flaticon.com/512/1903/1903162.png" />
+                {{/if}}
+
                 <p>Published Date: {{this.publishedDate}}<br />
+
                     {{#if this.language}}
                     Page count: {{this.pageCount}}<br />
                     Language: {{this.language}}<br />
+                    
                     <a href="{{this.previewLink}}">Preview</a> <br />
                     {{else }}
                     Type: {{this.type}}<br />
                     Artist: {{this.author}}<br />
                     <a href="{{this.previewLink}}">Preview</a> <br />
+                    
                     {{/if}}
                     <a href="/favorites/{{_id}}/edit">Edit</a>
                 </p>
 
                 <form action="/favorites/{{_id}}/delete" method="POST">
-                    <button>Delete</button>
+                    <button class="deleteBtn">Delete</button>
                 </form>
             </section>
         </div>

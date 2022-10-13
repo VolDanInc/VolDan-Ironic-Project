@@ -145,6 +145,8 @@ router.post("/favorites/createNewFavorites", isLoggedIn, (req, res, next) => {
     author: req.body.author,
     previewLink: req.body.previewLink
   }
+
+  
   Favorite.create(favorite)
     .then((favorite) => {
       res.redirect("/favorites")

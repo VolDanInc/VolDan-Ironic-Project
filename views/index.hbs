@@ -21,7 +21,7 @@
 
     </p>
 
-    <div class="arrow bounce"></div>
+    <div  class="arrow bounce"> <a href="#chooseBook"><img src="https://static1.squarespace.com/static/5e78f290575a6321739eba41/t/5ec8625c6dad0e25fa5a8234/1590190684880/Arrow.png"> </a></div>
 </div>
 
 <div class="container">
@@ -32,7 +32,13 @@
             <div class="titleFav">
             <h4 >{{volumeInfo.title}}</h4>
             </div>
+            {{#if volumeInfo.imageLinks.thumbnail}}
                 <img  src={{volumeInfo.imageLinks.thumbnail}}  />
+                {{else}}
+                <img src="https://cdn-icons-png.flaticon.com/512/1903/1903162.png" />
+                {{/if}}
+
+                
                 <p>{{volumeInfo.publishedDate}}</br>
                     Pages count: {{volumeInfo.pageCount}}</br>
                     Language: {{volumeInfo.language}}</br>
