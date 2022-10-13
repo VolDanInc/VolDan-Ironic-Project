@@ -224,8 +224,8 @@ padding-top: 15%;
   height: 40px;
 }
 .arrow img{
-  position: relative;
-  bottom: -9rem;
+  position: absolute;
+  bottom: 0;
   left: 50%;
   margin-left: -20px;
   width: 40px;
