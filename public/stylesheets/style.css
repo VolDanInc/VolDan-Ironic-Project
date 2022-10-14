@@ -290,7 +290,11 @@ button {
   min-height: 10px;
   width: auto;
   font-size: medium;
+}
 
+button:hover {
+  background-color: #f3a61762;
+  color: rgb(61, 61, 61);
 }
 
 #logoutBtn{
@@ -298,14 +302,22 @@ margin: unset;
 padding: unset;
 font-size: large;
 color: white;
+}
 
+#logoutBtn:hover {
+  font-weight: bold;
 }
 
 .deleteBtn{
 background-color: #d11a2a;
 margin:unset;
-
 }
+
+.deleteBtn:hover {
+  background-color: white;
+  color: #d11a2a;
+}
+
 .editTitle {
   text-align: center;
   color: rgb(252, 252, 252);

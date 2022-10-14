@@ -42,7 +42,7 @@
                 <p>{{volumeInfo.publishedDate}}</br>
                     Pages count: {{volumeInfo.pageCount}}</br>
                     Language: {{volumeInfo.language}}</br>
-                    <a href="{{volumeInfo.infoLink}}">More details</a>
+                    <a href="{{volumeInfo.infoLink}}" target="_blank">More details</a>
                 <div class="form">
                     <form action="/favorites/createNewFavorite" method="post">
                             <button class="addFavorites"> Add to favorites</button>
@@ -88,7 +88,7 @@
                 <p>{{release_date}}</br>
                     {{type}}: {{album_type}}</br>
                     {{artists.0.name}}</br>
-                    <a href={{external_urls.spotify}}>Link</a>
+                    <a href={{external_urls.spotify}} target="_blank">Link</a>
                 <div class="form">
                     <form action="/favorites/createNewFavorites" method="post">
                         <button class="addFavorites"> Add to favorites</button>
