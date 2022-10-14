@@ -380,3 +380,11 @@ margin:unset;
   max-height: 99vh; 
   min-height: 20vh;
 }
+
+#centList::-webkit-scrollbar {
+  background-color: rgba(169, 169, 169, 0);
+}
+#centList::-webkit-scrollbar-thumb {
+  background-color: rgba(48, 117, 138, 0.612);
+  border-radius: 10px;
+}
