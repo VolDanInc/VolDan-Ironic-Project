@@ -33,4 +33,11 @@ Website to choose your favorite form of entertainment (books, music albums, podc
     "spotify-web-api-node": "^5.0.2"
   - launch npm run dev from the terminal
   - open localhost:3000 in your browser
+- set parameters in the environment file .env :
+    - SESSION_SECRET='keyboard cat'
+    for Spotify credentials
+    - CLIENT_ID = XXXXXXXXXXX
+    - CLIENT_SECRET = XXXXXXXXXXX
+    for database
+    - MONGODB_URI = "link"
 - to launch in the internet https://voldan.herokuapp.com/
