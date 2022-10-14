@@ -129,6 +129,7 @@ router.post("/favorites/createNewFavorite", isLoggedIn, (req, res, next) => {
     title: req.body.title,
     imageLinks: req.body.imageLinks,
     publishedDate: req.body.publishedDate,
+    type: req.body.type,
     pageCount: req.body.pageCount,
     language: req.body.language,
     previewLink: req.body.previewLink
