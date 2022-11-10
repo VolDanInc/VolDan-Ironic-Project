@@ -1,6 +1,6 @@
-# Project1 | JS GAME
+# Project 2
 
-## It's the Hedgehog Simon's lunch adventure! 
+## Find your favorite entertainment. 
 
 ## Introduction
 
